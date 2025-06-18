@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feliz Cumpleaños, Dani 🎉</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<!-- REGALOS OCULTOS -->
+<div class="hidden-gift" onclick="mostrarRegalo('🎬 ¡Te regalo una ida al cine!')" style="top: 70%; left: 10%;">🎁</div>
+<div class="hidden-gift" onclick="mostrarRegalo('🍽️ ¡Cenamos en el restaurante que tú elijas!')" style="top: 25%; left: 85%;">🎁</div>
+
+<body>
+  <!-- Barra de carga inicial -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Preparando una sorpresa especial para Dani... ✨</p>
+      <div class="loading-bar">
+        <div class="loading-progress"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cursor mágico -->
+  <div id="magic-cursor" class="magic-cursor"></div>
+
+  <!-- Confeti container -->
+  <div id="confetti-container" class="confetti-container"></div>
+
+  <!-- Partículas de fondo -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <!-- Globos flotantes -->
+  <div id="balloons-container" class="balloons-container"></div>
+
+  <!-- Estrellas brillantes -->
+  <div id="stars-container" class="stars-container"></div>
+
+  <!-- Header principal -->
+  <header class="header">
+    <h1 class="main-title">🎉 ¡Feliz Cumpleaños, Dani! 🎉</h1>
+    <div class="message-container">
+      <p id="mensaje-animado"></p>
+    </div>
+    
+    <!-- Contador regresivo -->
+    <div class="countdown-container">
+      <h3>⏰ Tiempo hasta tu próximo cumpleaños:</h3>
+      <div id="countdown" class="countdown-display"></div>
+    </div>
+  </header>
+
+  <!-- Controles principales -->
+  <div class="main-controls">
+    <button class="btn btn-special" onclick="createFireworks()">🎆 Fuegos Artificiales</button>
+    <button class="btn btn-special" onclick="toggleTheme()">🌙 Cambiar Tema</button>
+    <button class="btn btn-special" onclick="fullScreenMode()">📺 Pantalla Completa</button>
+  </div>
+
+  <!-- Galería expandible -->
+  <section class="gallery-section">
+    <h2 class="gallery-title">✨ Momentos Especiales ✨</h2>
+    <div class="galeria">
+      <div class="photo-card" onclick="openModal('modal1')">
+        <img src="img/img5.jpg" alt="Momento especial 1">
+        <div class="photo-overlay">
+          <h3>Recuerdos especiales</h3>
+          <p>Cada cumpleaños es especial si se trata de ti</p>
+        </div>
+      </div>
+      <div class="photo-card" onclick="openModal('modal2')">
+        <img src="img/img1.jpg" alt="Momento especial 2">
+        <div class="photo-overlay">
+          <h3>Sonrisa eterna</h3>
+          <p>Tu sonrisa irradia alegria, nunca dejes de sonreir</p>
+        </div>
+      </div>
+      <div class="photo-card" onclick="openModal('modal3')">
+        <img src="img/img7.jpg" alt="Momento especial 3">
+        <div class="photo-overlay">
+          <h3>Felicidad unica</h3>
+          <p>Sigue siendo siempre esa niña risueña</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Carrusel automático -->
+    <div class="carousel-container">
+      <h3>🎠 Carrusel de Recuerdos</h3>
+      <div class="carousel">
+        <div class="carousel-track">
+          <img src="img/img1.jpg" alt="Recuerdo 1" class="carousel-image">
+          <img src="img/img3.jpg" alt="Recuerdo 2" class="carousel-image">
+          <img src="img/img4.jpg" alt="Recuerdo 3" class="carousel-image">
+          <img src="img/img5.jpg" alt="Recuerdo 4" class="carousel-image">
+          <img src="img/img2.jpg" alt="Recuerdo 4" class="carousel-image">
+          <img src="img/img6.jpg" alt="Recuerdo 4" class="carousel-image">
+          <img src="img/img7.jpg" alt="Recuerdo 4" class="carousel-image">
+        </div>
+      </div>
+    </div>
+
+    <!-- Botones de acción principales -->
+    <div class="buttons-container">
+      <button class="btn btn-primary" onclick="mostrarSorpresa()">
+        🎁 Descubre tu sorpresa
+      </button>
+      <button class="btn btn-secondary" onclick="toggleMusica()">
+        🎵 Música especial
+      </button>
+      <button class="btn btn-special" onclick="openWishBox()">
+        💝 Caja de Deseos
+      </button>
+      <button class="btn btn-special" onclick="startQuiz()">
+        🧩 Quiz Divertido
+      </button>
+    </div>
+
+   
+
+    <!-- Sorpresa oculta -->
+    <div id="sorpresa" class="sorpresa-oculta">
+      <h2>🌟 Siempre has sido una luz hermosa 🌟</h2>
+      <img src="img/snoo.png" alt="Sorpresa especial" class="sorpresa-img">
+      <p class="surprise-message">
+        "Eres una persona increíble y mereces toda la felicidad del mundo"
+      </p>
+      <button class="btn btn-download" onclick="downloadImage('img/snoo.png')">
+        📥 Descargar Foto
+      </button>
+    </div>
+  </section>
+
+   <!-- Mini Juegos -->
+    <div class="games-section">
+      <h3>🎪 Mini Juegos</h3>
+      <div class="games-grid">
+        <div class="game-card" onclick="startPinataGame()">
+          <h4>🪅 Rompe la Piñata</h4>
+          <p>¡Haz clic para romperla!</p>
+        </div>
+        <div class="game-card" onclick="startTreasureHunt()">
+          <h4>🔍 Busca los Regalos</h4>
+          <p>Encuentra los regalos escondidos</p>
+        </div>
+        <div class="game-card" onclick="openCakeDecorator()">
+          <h4>🎂 Decora el Pastel</h4>
+          <p>Crea tu pastel perfecto</p>
+        </div>
+      </div>
+    </div>
+
+  <!-- Modales para galería -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal1')">&times;</span>
+      <img src="img/img3.jpg" alt="Imagen expandida" class="modal-image">
+      <p class="modal-caption">Recuerdos hermosos que durarán para siempre</p>
+    </div>
+  </div>
+
+  <div id="modal2" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal2')">&times;</span>
+      <img src="img/img5.jpg" alt="Imagen expandida" class="modal-image">
+      <p class="modal-caption">Tu sonrisa ilumina cada día</p>
+    </div>
+  </div>
+
+  <div id="modal3" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('modal3')">&times;</span>
+      <img src="img/img4.jpg" alt="Imagen expandida" class="modal-image">
+      <p class="modal-caption">Momentos únicos e irrepetibles</p>
+    </div>
+  </div>
+
+  
+
+  <!-- Caja de Deseos -->
+  <div id="wish-box" class="wish-box">
+    <div class="wish-content">
+      <span class="close" onclick="closeWishBox()">&times;</span>
+      <h3>💝 Escribe tus deseos para este nuevo año</h3>
+      <textarea id="wish-text" placeholder="Escribe aquí tus deseos y metas..."></textarea>
+      <button class="btn btn-primary" onclick="saveWish()">💫 Guardar Deseo</button>
+      <div id="saved-wishes" class="saved-wishes"></div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div id="quiz-modal" class="quiz-modal">
+    <div class="quiz-content">
+      <span class="close" onclick="closeQuiz()">&times;</span>
+      <h3>🧩 Quiz Divertido sobre Dani</h3>
+      <div id="quiz-container">
+        <div class="quiz-question">
+          <p id="question-text">¿Cuál crees que es su color favorito?</p>
+          <div class="quiz-options">
+            <button class="quiz-option" onclick="checkAnswer(0)">💗 Rosa</button>
+            <button class="quiz-option" onclick="checkAnswer(1)">💙 Azul</button>
+            <button class="quiz-option" onclick="checkAnswer(2)">💜 Morado</button>
+          </div>
+        </div>
+        <div id="quiz-result" class="quiz-result"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Piñata Game -->
+  <div id="pinata-game" class="pinata-game">
+    <div class="pinata-content">
+      <span class="close" onclick="closePinataGame()">&times;</span>
+      <h3>🪅 ¡Rompe la Piñata!</h3>
+      <div class="pinata-container">
+        <div id="pinata" class="pinata" onclick="hitPinata()">🪅</div>
+        <div id="pinata-hits" class="pinata-hits">Golpes: 0/5</div>
+      </div>
+      <div id="candy-rain" class="candy-rain"></div>
+    </div>
+  </div>
+
+  
+
+  <!-- Decorador de Pastel -->
+  <div id="cake-decorator" class="cake-decorator">
+    <div class="decorator-content">
+      <span class="close" onclick="closeCakeDecorator()">&times;</span>
+      <h3>🎂 Decora tu Pastel</h3>
+      <div class="cake-canvas">
+        <div id="virtual-cake" class="virtual-cake">
+          <div class="cake-layer cake-bottom"></div>
+          <div class="cake-layer cake-middle"></div>
+          <div class="cake-layer cake-top"></div>
+        </div>
+      </div>
+      <div class="decoration-tools">
+        <button class="decoration-btn" onclick="addCandles()">🕯️ Velas</button>
+        <button class="decoration-btn" onclick="addFlowers()">🌸 Flores</button>
+        <button class="decoration-btn" onclick="addStars()">⭐ Estrellas</button>
+        <button class="decoration-btn" onclick="resetCake()">🔄 Reiniciar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certificado de Cumpleaños -->
+  <div class="certificate-section">
+  <h3>🏆 Certificado Especial</h3>
+  <div class="certificate">
+    <div class="certificate-header">🎓 CERTIFICADO OFICIAL 🎓</div>
+    <div class="certificate-body">
+      <p>Se otorga a</p>
+      <h2 class="certificate-name">DANI</h2>
+      <p>Por ser una persona extraordinaria</p>
+      <p>Y llenar de alegría cada día</p>
+      <div class="certificate-date" style="margin-bottom: 16px;">Fecha: 18 de Junio, 2025</div>
+
+    </div>
+
+    <!-- Enlace para abrir el PDF en otra pestaña -->
+    <a href="pdf/Certificado.pdf" target="_blank" class="btn btn-download">
+      📜 Ver Certificado
+    </a>
+  </div>
+</div>
+
+
+  <!-- Predicciones del Año -->
+  <div class="predictions-section">
+    <h3>🔮 Predicciones para tu Nuevo Año</h3>
+    <div class="predictions-grid">
+      <div class="prediction-card">
+        <h4>💖 Amor</h4>
+        <p>Este año estará lleno de momentos especiales con las personas que más quieres</p>
+      </div>
+      <div class="prediction-card">
+        <h4>🌟 Éxito</h4>
+        <p>Lograrás todas las metas que te propongas con tu determinación</p>
+      </div>
+      <div class="prediction-card">
+        <h4>✨ Felicidad</h4>
+        <p>Cada día traerá nuevas razones para sonreír y celebrar</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mensaje final -->
+  <section class="final-message">
+    <p>Que todos tus sueños se hagan realidad. ¡Te mereces todo lo bonito y lindo de esta vida!</p>
+    
+    <div class="hearts">💖 ✨ 🎂 ✨ 💖</div>
+
+   
+    
+    <!-- Botones de compartir -->
+    <div class="share-buttons">
+      <button class="btn btn-share" onclick="shareOnFacebook()">📘 Compartir</button>
+      <button class="btn btn-share" onclick="shareOnWhatsApp()">💬 WhatsApp</button>
+      <button class="btn btn-share" onclick="copyLink()">🔗 Copiar Link</button>
+    </div>
+  </section>
+
+  <!-- Audio -->
+  <audio id="musica" loop>
+    <source src="musica/Fonseca - Te Mando Flores.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio HTML5.
+  </audio>
+
+  <!-- Efectos de sonido -->
+  <audio id="confetti-sound" src="musica/Confetti Sounds Effects - FREE No Copyright (mp3cut.net).mp3"></audio>
+  <audio id="click-sound" src="musica/shine-11-268907.mp3"></audio>
+  <audio id="success-sound" src="musica/success-340660.mp3"></audio>
+
+  <!-- Controles de audio -->
+  <div class="audio-controls">
+    <button id="audioBtn" class="audio-btn" onclick="toggleMusica()">🔊</button>
+  </div>
+
+  <script src="script.js"></script>
+  
+
+ <div class="author-scroll-message">
+  <p>💌 Con mucho cariño,<br><strong>Nicolás</strong></p>
+</div>
+
+
+</body>
+</html>
